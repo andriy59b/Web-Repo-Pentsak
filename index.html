@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Internet Store - Pentsak Andrii</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <!-- Logo -->
+            <a class="navbar-brand" href="/">
+                <img src="./image/logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                adicros
+            </a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">men</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">women</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">junior</a>
+                  </li>
+                </ul>
+                <!-- Search product form -->
+                <form class="d-flex p-1">
+                    <input class="form-control me-2" type="search" placeholder="search product" aria-label="Search">
+                    <button class="btn btn-outline-secondary" type="submit">search</button>
+                </form>
+
+                <!-- Click on Modal Button -->
+                    <button type="button" class="btn btn-primary d-block" data-bs-toggle="modal" data-bs-target="#modalForm">
+                        Login
+                    </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Authorization</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <!-- 1. Текстове поле -->
+                                        <label class="form-label">Email Address</label>
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <!-- 2. Текстове поле для введення пароля -->
+                                        <label class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <br>
+                                            <!-- 6. Поле для файлів -->
+                                            <label for="file">Choose file</label>
+                                            <input type="file" id="file" name="file">
+
+                                        <br>
+                                    </div>
+                                    <div class="mb-3">
+                                        <br>
+                                            <!-- 8. Списки, що розкриваються -->
+                                            <label for="dropdown">Choose from list:</label>
+                                            <select id="dropdown" name="dropdown">
+                                                <option value="option1">Working</option>
+                                                <option value="option2">Student</option>
+                                                <option value="option3">none</option>
+                                            </select>
+                                        <br>
+                                    </div>
+                                    <div class="mb-3">
+                                        <br>
+                                        <!-- 4. Перемикачі -->
+                                            <label for="radio1">Male</label>
+                                            <input type="radio" id="radio1" name="options" value="1">
+                                            <label for="radio2">Female</label>
+                                            <input type="radio" id="radio2" name="options" value="2">
+                                        <br>
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                        <!-- 3. Прапорці -->
+                                        <input type="checkbox" class="form-check-input" id="rememberMe" />
+                                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                                    </div>
+                                    <div class="modal-footer d-block">
+                                        <!-- 5. Кнопки -->
+                                        <p class="float-start">Not yet account <a href="#">Sign Up</a></p>
+                                        <button type="submit" class="btn btn-warning float-end">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+      </nav>
+    <header class="header">
+        <div class="text-center p-3">
+            <h1>
+                <span class="badge bg-secondary">
+                    ПОПУЛЯРНЕ ЗАРАЗ
+                </span>
+            </h1>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="product_1">
+                <figure class="figure text-center p-3 mb-5 bg-body" >
+                    <a href="https://www.adidas.ua/krossovki-grand-court-base-lifestyle-sportswear-hr0234-1?feed=gm%3Futm_source%3Dgoogle&utm_medium=f_merch&gad_source=1&gclid=Cj0KCQiA5rGuBhCnARIsAN11vgQjqt2cEsMQsmdL6WYwJHw2Yk4-mK6pVuu1x_8lObpTpC9LtN_BA5UaAglEEALw_wcB" target="_blank">
+                        <img src="./image/product1.webp" class="figure-img img-fluid rounded mx-auto d-block" alt="product1" width="400" height="300">
+                    </a>
+                    <figcaption class="figure-caption">КРОСІВКИ GRAND COURT BASE LIFESTYLE</figcaption>
+                </figure>
+            </div>
+            <div class="product_2">
+                <figure class="figure text-center p-3 mb-5 bg-body" >
+                    <a href="https://www.adidas.ua/futbolnye-butsy-copa-pure-2-league-tf-performance-ie7498-1" target="_blank">
+                        <img src="./image/product2.webp" class="figure-img img-fluid rounded mx-auto d-block" alt="product2" width="400" height="300">
+                    </a>
+                    <figcaption class="figure-caption">ФУТБОЛЬНІ БУТСИ COPA PURE II LEAGUE TURF</figcaption>
+                </figure>
+            </div>
+            <div class="product_3">
+                <figure class="figure text-center p-3 mb-5 bg-body" >
+                    <a href="https://www.adidas.ua/krosivki-ozmillen-originals-ie3517" target="_blank">
+                        <img src="./image/product3.webp" class="figure-img img-fluid rounded mx-auto d-block" alt="product3" width="400" height="300">
+                    </a>
+                    <figcaption class="figure-caption">КРОСІВКИ OZMILLEN</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <table class="table">
+            <h1 class="text-center">
+                <span class="">
+                    ТОП 5 НАЙПРОДАВАНІШИХ КРОСІВОК МИНУЛОГО РОКУ
+                </span>
+            </h1>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">КРОСИ</th>
+                <th scope="col">ЦІНА</th>
+                <th scope="col">КІЛЬКІСТЬ ПРОДАНИХ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Adidas Superstar</td>
+                <td>80-250$</td>
+                <td>800000 пар</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Adidas Stan Smith</td>
+                <td>60-120$</td>
+                <td>760000 пар</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Adidas Ultra Boost</td>
+                <td>120-340$</td>
+                <td>570000 пар</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Adidas NMD</td>
+                <td>140-250$</td>
+                <td>450000 пар</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Adidas Ultra Boost</td>
+                <td>120-340$</td>
+                <td>570000 пар</td>
+              </tr>
+            </tbody>
+          </table>
+
+            <!-- Нумерований список (каталог товарів) -->
+            <div class="list">
+
+                <h2>Каталог  оригінального взуття</h2>
+                <ol>
+                    <li>Бігове взуття
+                        <ul>
+                            <li>Ultraboost</li>
+                            <li>Edge Bounce</li>
+                        </ul>
+                    </li>
+                    <li>Футбольні черевики
+                        <ul>
+                            <li>Predator</li>
+                            <li>Copa Mundial</li>
+                        </ul>
+                    </li>
+                    <li>Тренувальне взуття
+                        <ul>
+                            <li>Alphabounce</li>
+                            <li>Powerlift</li>
+                        </ul>
+                    </li>
+                </ol>
+        
+                <!-- Маркований список (переваги покупки в adidas) -->
+                <h2>Переваги покупки в Adicros</h2>
+                <ul>
+                    <li>Висока якість взуття</li>
+                    <li>Широкий асортимент моделей</li>
+                    <li>Безкоштовна доставка при замовленні від $100</li>
+                    <li>Знижки для постійних клієнтів</li>
+                </ul>
+        
+                <!-- Визначення (характеристики вибраної моделі) -->
+                <h2>Характеристики Adidas Ultraboost</h2>
+                <dl>
+                    <dt>Тип:</dt>
+                    <dd>Бігове взуття</dd>
+        
+                    <dt>Технологія підошви:</dt>
+                    <dd>Boost</dd>
+        
+                    <dt>Матеріал верху:</dt>
+                    <dd>Плетений текстиль</dd>
+                </dl>
+        
+                <!-- Вкладені списки -->
+                <h2>Для неї і для нього</h2>
+                <ol>
+                    <li>Жіноче взуття
+                        <ul>
+                            <li>Бігове взуття</li>
+                            <li>Тренувальне взуття</li>
+                        </ul>
+                    </li>
+                    <li>Чоловіче взуття
+                        <ul>
+                            <li>Футбольні черевики</li>
+                            <li>Тренувальне взуття</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+    </header>
+
+    <footer class="footer">
+        <div class="text-center p-3">
+            <p>2024</p>
+            <!-- 5. Спеціальні символи -->
+            <p>&copy; "ADICROS-UKRAINE". Всі права захищені</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
