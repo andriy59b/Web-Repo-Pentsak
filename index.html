@@ -3,67 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Internet Store - Pentsak Andrii</title>
+    <style>
+        body {
+            display: flex;
+	        flex-direction: column;
+	        min-height: 100vh;
+
+	        font-family: 'DM Sans', sans-serif;
+	        letter-spacing: -0.5px;
+
+	        /* Light mode */
+	        background-color: var(--page-bg);
+	        color: var(--text-color);
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-row">
               <!-- Logo -->
-            <a class="navbar-brand" href="/">
-                <img src="./image/logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                adicros
-            </a>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">men</a>
+              <a class="logo" href="/">ADICROS</a>
+                
+              <ul class="nav-list">
+                  <li class="nav-list__item">
+                          <a class="nav-list__link nav-list__link--active"href="#">men</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">women</a>
+                  <li class="nav-list__item">
+                      <a class="nav-list__link" href="#">women</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">junior</a>
+                  <li class="nav-list__item">
+                      <a class="nav-list__link" href="#">junior</a>
                   </li>
-                </ul>
-                <!-- Search product form -->
-                <form class="d-flex p-1">
-                    <input class="form-control me-2" type="search" placeholder="search product" aria-label="Search">
-                    <button class="btn btn-outline-secondary" type="submit">search</button>
+
+                  <!-- Search product form -->
+                <form class="search_form">
+                    <input class="search_form" type="search" placeholder="search product" aria-label="Search">
+                    <button class="btn" type="submit">search</button>
                 </form>
 
-                <!-- Click on Modal Button -->
-                    <button type="button" class="btn btn-primary d-block" data-bs-toggle="modal" data-bs-target="#modalForm">
-                        Login
-                    </button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" id="loginButton" data-bs-toggle="modal" data-bs-target="#modalForm">
+                    Login
+                </button>
+
+              </ul>
+            </div>
 
                 <!-- Modal -->
-                <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Authorization</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <form>
                                     <div class="mb-3">
-                                        <!-- 1. Текстове поле -->
+                                         <!-- 1. Текстове поле  -->
                                         <label class="form-label">Email Address</label>
                                         <input type="text" class="form-control" id="username" name="username" placeholder="Username" />
                                     </div>
                                     <div class="mb-3">
-                                        <!-- 2. Текстове поле для введення пароля -->
+                                         <!-- 2. Текстове поле для введення пароля  -->
                                         <label class="form-label">Password</label>
                                         <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
                                     </div>
                                     <div class="mb-3">
                                         <br>
-                                            <!-- 6. Поле для файлів -->
+                                             <!-- 6. Поле для файлів  -->
                                             <label for="file">Choose file</label>
                                             <input type="file" id="file" name="file">
 
@@ -71,7 +82,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <br>
-                                            <!-- 8. Списки, що розкриваються -->
+                                             <!-- 8. Списки, що розкриваються  -->
                                             <label for="dropdown">Choose from list:</label>
                                             <select id="dropdown" name="dropdown">
                                                 <option value="option1">Working</option>
@@ -82,7 +93,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <br>
-                                        <!-- 4. Перемикачі -->
+                                         <!-- 4. Перемикачі  -->
                                             <label for="radio1">Male</label>
                                             <input type="radio" id="radio1" name="options" value="1">
                                             <label for="radio2">Female</label>
@@ -90,12 +101,12 @@
                                         <br>
                                     </div>
                                     <div class="mb-3 form-check">
-                                        <!-- 3. Прапорці -->
+                                         <!-- 3. Прапорці  -->
                                         <input type="checkbox" class="form-check-input" id="rememberMe" />
                                         <label class="form-check-label" for="rememberMe">Remember me</label>
                                     </div>
                                     <div class="modal-footer d-block">
-                                        <!-- 5. Кнопки -->
+                                         <!-- 5. Кнопки  -->
                                         <p class="float-start">Not yet account <a href="#">Sign Up</a></p>
                                         <button type="submit" class="btn btn-warning float-end">Submit</button>
                                     </div>
@@ -103,97 +114,92 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
               </div>
         </div>
       </nav>
     <header class="header">
-        <div class="text-center p-3">
-            <h1>
-                <span class="badge bg-secondary">
-                    ПОПУЛЯРНЕ ЗАРАЗ
-                </span>
-            </h1>
-        </div>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="product_1">
-                <figure class="figure text-center p-3 mb-5 bg-body" >
-                    <a href="https://www.adidas.ua/krossovki-grand-court-base-lifestyle-sportswear-hr0234-1?feed=gm%3Futm_source%3Dgoogle&utm_medium=f_merch&gad_source=1&gclid=Cj0KCQiA5rGuBhCnARIsAN11vgQjqt2cEsMQsmdL6WYwJHw2Yk4-mK6pVuu1x_8lObpTpC9LtN_BA5UaAglEEALw_wcB" target="_blank">
-                        <img src="./image/product1.webp" class="figure-img img-fluid rounded mx-auto d-block" alt="product1" width="400" height="300">
-                    </a>
-                    <figcaption class="figure-caption">КРОСІВКИ GRAND COURT BASE LIFESTYLE</figcaption>
-                </figure>
-            </div>
-            <div class="product_2">
-                <figure class="figure text-center p-3 mb-5 bg-body" >
-                    <a href="https://www.adidas.ua/futbolnye-butsy-copa-pure-2-league-tf-performance-ie7498-1" target="_blank">
-                        <img src="./image/product2.webp" class="figure-img img-fluid rounded mx-auto d-block" alt="product2" width="400" height="300">
-                    </a>
-                    <figcaption class="figure-caption">ФУТБОЛЬНІ БУТСИ COPA PURE II LEAGUE TURF</figcaption>
-                </figure>
-            </div>
-            <div class="product_3">
-                <figure class="figure text-center p-3 mb-5 bg-body" >
-                    <a href="https://www.adidas.ua/krosivki-ozmillen-originals-ie3517" target="_blank">
-                        <img src="./image/product3.webp" class="figure-img img-fluid rounded mx-auto d-block" alt="product3" width="400" height="300">
-                    </a>
-                    <figcaption class="figure-caption">КРОСІВКИ OZMILLEN</figcaption>
-                </figure>
-            </div>
-        </div>
-
-        <table class="table">
-            <h1 class="text-center">
-                <span class="">
-                    ТОП 5 НАЙПРОДАВАНІШИХ КРОСІВОК МИНУЛОГО РОКУ
-                </span>
-            </h1>
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">КРОСИ</th>
-                <th scope="col">ЦІНА</th>
-                <th scope="col">КІЛЬКІСТЬ ПРОДАНИХ</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Adidas Superstar</td>
-                <td>80-250$</td>
-                <td>800000 пар</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Adidas Stan Smith</td>
-                <td>60-120$</td>
-                <td>760000 пар</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Adidas Ultra Boost</td>
-                <td>120-340$</td>
-                <td>570000 пар</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Adidas NMD</td>
-                <td>140-250$</td>
-                <td>450000 пар</td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Adidas Ultra Boost</td>
-                <td>120-340$</td>
-                <td>570000 пар</td>
-              </tr>
-            </tbody>
-          </table>
-
+        <div class="container">
+            <main class="section">
+                <div class="container">
+                    <h2 class="title-1">Popular Now</h2>
+                    <ul class="products">
+                        <li class="product">
+                            <a href="https://www.adidas.ua/krossovki-grand-court-base-lifestyle-sportswear-hr0234-1?feed=gm%3Futm_source%3Dgoogle&utm_medium=f_merch&gad_source=1&gclid=Cj0KCQiA5rGuBhCnARIsAN11vgQjqt2cEsMQsmdL6WYwJHw2Yk4-mK6pVuu1x_8lObpTpC9LtN_BA5UaAglEEALw_wcB">
+                                <img src="./image/product1.webp" alt="product img" class="product__img">
+                                <h3 class="product__title">GRAND COURT BASE LIFESTYLE</h3>
+                            </a>
+                        </li>
+                        <li class="product">
+                            <a href="https://www.adidas.ua/futbolnye-butsy-copa-pure-2-league-tf-performance-ie7498-1">
+                                <img src="./image/product2.webp" alt="product img" class="product__img">
+                                <h3 class="product__title">COPA PURE II LEAGUE TURF</h3>
+                            </a>
+                        </li>
+                        <li class="product">
+                            <a href="https://www.adidas.ua/krosivki-ozmillen-originals-ie3517">
+                                <img src="./image/product3.webp" alt="product img" class="product__img">
+                                <h3 class="product__title">OZMILLEN</h3>
+                            </a>
+                        </li>
+        
+                    </ul>
+                </div>
+            </main>
+            <div>
+            
+            <table class="table">
+                <h1>
+                    <span class="title-1">
+                        ТОП 5 НАЙПРОДАВАНІШИХ КРОСІВОК МИНУЛОГО РОКУ
+                    </span>
+                </h1>
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">КРОСИ</th>
+                        <th scope="col">ЦІНА</th>
+                        <th scope="col">КІЛЬКІСТЬ ПРОДАНИХ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Adidas Superstar</td>
+                        <td>80-250$</td>
+                        <td>800000 пар</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Adidas Stan Smith</td>
+                        <td>60-120$</td>
+                        <td>760000 пар</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Adidas Ultra Boost</td>
+                        <td>120-340$</td>
+                        <td>570000 пар</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Adidas NMD</td>
+                        <td>140-250$</td>
+                        <td>450000 пар</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Adidas Ultra Boost</td>
+                        <td>120-340$</td>
+                        <td>570000 пар</td>
+                    </tr>
+                </tbody>
+            </table>
+            
             <!-- Нумерований список (каталог товарів) -->
             <div class="list">
-
-                <h2>Каталог  оригінального взуття</h2>
+                
+                <h2 class="title-1">Каталог  оригінального взуття</h2>
                 <ol>
                     <li>Бігове взуття
                         <ul>
@@ -214,31 +220,31 @@
                         </ul>
                     </li>
                 </ol>
-        
+                
                 <!-- Маркований список (переваги покупки в adidas) -->
-                <h2>Переваги покупки в Adicros</h2>
+                <h2 class="title-1">Переваги покупки в Adicros</h2>
                 <ul>
                     <li>Висока якість взуття</li>
                     <li>Широкий асортимент моделей</li>
                     <li>Безкоштовна доставка при замовленні від $100</li>
                     <li>Знижки для постійних клієнтів</li>
                 </ul>
-        
+                
                 <!-- Визначення (характеристики вибраної моделі) -->
-                <h2>Характеристики Adidas Ultraboost</h2>
+                <h2 class="title-1">Характеристики Adidas Ultraboost</h2>
                 <dl>
                     <dt>Тип:</dt>
                     <dd>Бігове взуття</dd>
-        
+                    
                     <dt>Технологія підошви:</dt>
                     <dd>Boost</dd>
-        
+                    
                     <dt>Матеріал верху:</dt>
                     <dd>Плетений текстиль</dd>
                 </dl>
-        
+                
                 <!-- Вкладені списки -->
-                <h2>Для неї і для нього</h2>
+                <h2 class="title-1">Для неї і для нього</h2>
                 <ol>
                     <li>Жіноче взуття
                         <ul>
@@ -254,18 +260,27 @@
                     </li>
                 </ol>
             </div>
-    </header>
+        </header>
 
-    <footer class="footer">
-        <div class="text-center p-3">
-            <p>2024</p>
-            <!-- 5. Спеціальні символи -->
-            <p>&copy; "ADICROS-UKRAINE". Всі права захищені</p>
-        </div>
-    </footer>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__wrapper">
+                    <ul class="social">
+                        <li class="social__item"><a href="#!"><img src="./image/icons/instagram.svg" alt="Link"></a></li>
+                        <li class="social__item"><a href="#!"><img src="./image/icons/twitter.svg" alt="Link"></a></li>
+                        <li class="social__item"><a href="#!"><img src="./image/icons/gitHub.svg" alt="Link"></a></li>
+                        <li class="social__item"><a href="#!"><img src="./image/icons/linkedIn.svg" alt="Link"></a></li>
+                    </ul>
+                    <div class="copyright">
+                        <p>© 2024 adicros.com</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 </html>

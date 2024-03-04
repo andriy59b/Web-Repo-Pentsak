@@ -1,0 +1,581 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap');
+
+:root {
+	/* Colors */
+	--blackpure: #000;
+	--black: #171718;
+	--black-border: #26292d;
+	--white: #fff;
+	--purple: #5c62ec;
+
+	/* Nav */
+	--nav-bg: var(--black);
+	--nav-border: var(--black-border);
+	--nav-text: var(--white);
+
+	/* Header */
+	--header-bg: var(--black);
+	--header-text: var(--white);
+
+	/* Footer */
+	--footer-bg: var(--black);
+	--footer-text: var(--white);
+
+	/* Light mode */
+	--page-bg: var(--white);
+	--text-color: var(--black);
+	--accent: var(--purple);
+	--title-1: var(--accent);
+
+	--product-card-bg: var(--white);
+	--product-card-text: var(--black);
+	--box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.25);
+}
+
+* {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+
+
+/* General */
+
+.container {
+	margin: 0 auto;
+	padding: 0 15px;
+	max-width: 1200px;
+}
+
+.none {
+	display: none !important;
+}
+
+
+.title-1 {
+	margin-bottom: 60px;
+
+	font-size: 60px;
+	font-weight: 700;
+	line-height: 1.3;
+	color: var(--title-1);
+	text-align: center;
+}
+
+/* Nav */
+
+.nav {
+	padding: 20px 0;
+	background-color: var(--nav-bg);
+	border-bottom: 1px solid var(--nav-border);
+	color: var(--nav-text);
+	letter-spacing: normal;
+}
+
+.nav-row {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	column-gap: 30px;
+	row-gap: 20px;
+	flex-wrap: wrap;
+}
+
+.logo {
+	margin-right: auto;
+	color: var(--nav-text);
+	font-size: 24px;
+	font-family: 'Poppins', sans-serif;
+}
+
+.nav-list {
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: 10px;
+	align-items: center;
+	column-gap: 40px;
+	font-size: 16px;
+	font-weight: 500;
+	font-family: 'Poppins', sans-serif;
+}
+
+.nav-list__link {
+	color: var(--nav-text);
+	transition: opacity 0.2s ease-in;
+}
+
+.nav-list__link:hover {
+	opacity: 0.8;
+}
+
+.nav-list__link--active {
+	position: relative;
+}
+
+.nav-list__link--active::before {
+	content: '';
+
+	position: absolute;
+	left: 0;
+	top: 100%;
+
+	display: block;
+	height: 2px;
+	width: 100%;
+	background-color: var(--accent);
+}
+
+.search_form {
+	position: relative;
+	z-index: 9;
+}
+
+/* Modal Login */
+
+/* Стилізація заголовка модалу */
+.modal-header {
+    background-color: var(--laguna);
+    color: var(--dark-grey);
+    padding: 15px;
+    animation: fadeInUp 0.5s ease-in-out; /* Анімація появи для заголовка модалу */
+}
+
+/* Стилізація форми в модалі */
+.modal-body form {
+    max-width: 400px;
+    margin: 0 auto;
+    animation: fadeInUp 0.5s ease-in-out; /* Анімація появи для форми в модалі */
+}
+
+/* Анімація появи знизу */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modal content */
+.modal-content {
+    opacity: 0; /* Початковий стан: елемент невидимий */
+    transform: translateY(20px); /* Початковий стан: зсув вниз на 20px */
+    animation: fadeIn 0.5s ease-in-out forwards; /* Анімація появи для вмісту модалу */
+}
+
+/* Анімація появи для вмісту модалу */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Стилізація текстових полів у формі */
+.form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Стилізація кнопок у формі */
+.modal-footer button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Стилізація посилання на реєстрацію */
+.modal-footer p {
+    margin-bottom: 0;
+}
+
+.modal-footer a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* Стилізація чекбоксу та прапорця */
+.form-check-label {
+    margin-left: 5px;
+}
+
+/* Стилізація списку розкриваючихся */
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/*
+
+
+/* Table */
+
+/* Стилізація заголовка таблиці */
+.table h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark-grey);
+}
+
+.table span {
+    color: var(--accent);
+}
+
+/* Стилізація заголовків стовпців */
+.table th {
+    background-color: var(--laguna);
+    color: var(--dark-grey);
+    padding: 10px;
+    text-align: left;
+}
+
+/* Стилізація рядків таблиці */
+.table tbody tr {
+    border-bottom: 1px solid #ccc;
+}
+
+/* Стилізація номерів рядків */
+.table tbody th {
+    background-color: var(--purple);
+    color: var(--white);
+    padding: 10px;
+}
+
+/* Стилізація тексту в рядках таблиці */
+.table tbody td {
+    padding: 10px;
+}
+
+/* Додаткові стилі для парних рядків таблиці */
+.table tbody tr:nth-child(even) {
+    background-color: var(--light-laguna);
+}
+
+/* Lists */
+
+/* Стилізація нумерованого списку */
+.list ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+}
+
+.list ol li {
+    margin-bottom: 10px;
+}
+
+/* Стилізація маркованого списку */
+.list ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.list ul li {
+    margin-bottom: 8px;
+}
+
+/* Стилізація визначень */
+.list dl {
+    margin-left: 20px;
+}
+
+.list dt {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.list dd {
+    margin-bottom: 10px;
+}
+
+/* Стилізація вкладених списків */
+.list ul ul,
+.list ol ol {
+    list-style-type: circle;
+    margin-left: 20px;
+}
+
+.list ul ul li,
+.list ol ol li {
+    margin-bottom: 6px;
+}
+
+/* Header */
+
+.header {
+	padding: 40px 0;
+	min-height: 695px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background-color: var(--header-bg);
+	background-image: url('./../img/header-bg.png');
+	background-repeat: no-repeat;
+	background-size: auto;
+	background-position: center center;
+
+	color: var(--header-text);
+	text-align: center;
+}
+
+/* Btn */
+
+.btn {
+	display: inline-block;
+	height: 48px;
+	padding: 12px 28px;
+
+	border-radius: 5px;
+	background-color: var(--accent);
+	color: var(--white);
+	letter-spacing: 0.15px;
+	font-size: 16px;
+	font-weight: 500;
+
+	transition: opacity 0.2s ease-in;
+}
+
+.btn:hover {
+	opacity: 0.8;
+}
+
+.btn:active {
+	position: relative;
+	top: 1px;
+}
+
+/* products */
+
+.products {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	column-gap: 30px;
+	row-gap: 30px;
+}
+
+.product {
+	position: relative;
+	max-width: 370px;
+	background-color: var(--product-card-bg);
+	box-shadow: var(--box-shadow);
+	border-radius: 10px;
+	overflow: hidden;
+	animation: fadeIn 0.5s ease-in-out; /* Додав анімацію появи */
+}
+
+.product:hover {
+	transform: scale(1.01); /* Збільшуємо елемент при наведенні миші */
+}
+
+.product__img {
+	border-radius: 10px;
+}
+
+.product__title {
+	padding: 15px 20px 25px;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 1.3;
+	color: var(--product-card-text);
+	transition: color 0.5s ease-in-out; /* Додав анімацію для кольору тексту */
+}
+
+.product:hover .product__title {
+	color: var(--accent); /* Змінюємо колір тексту при наведенні миші */
+}
+
+/* Анімація появи */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Початковий стан - прозорість та зсув на 20px вниз */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Закінчений стан - повертаємо на місце */
+  }
+}
+
+
+
+
+/* Footer */
+
+.footer {
+	margin-top: auto;
+	padding: 60px 0 50px;
+	background-color: var(--footer-bg);
+	color: var(--footer-text);
+}
+
+.footer__wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: 27px;
+}
+
+.social {
+	display: flex;
+	column-gap: 30px;
+	align-items: center;
+}
+
+.copyright {
+	font-size: 16px;
+}
+
+.copyright p + p {
+	margin-top: 0.5em;
+}
+
+:focus,
+:active {
+	/*outline: none;*/
+}
+
+a:focus,
+a:active {
+	/* outline: none;*/
+}
+
+/* Links */
+
+a, a:link, a:visited  {
+    /* color: inherit; */
+    text-decoration: none;
+    /* display: inline-block; */
+}
+
+a:hover  {
+    /* color: inherit; */
+    text-decoration: none;
+}
+
+/* Common */
+
+aside, nav, footer, header, section, main {
+	display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-size: inherit;
+	font-weight: inherit;
+}
+
+ul, ul li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+img, svg {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Form */
+
+input, textarea, button, select {
+	font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+button, input[type="submit"] {
+    display: inline-block;
+    box-shadow: none;
+    background-color: transparent;
+    background: none;
+    cursor: pointer;
+}
+
+input:focus, input:active,
+button:focus, button:active {
+    outline: none;
+}
+
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+label {
+	cursor: pointer;
+}
+
+legend {
+	display: block;
+}
+
+@media (max-width: 620px) {
+	/* Header  */
+
+	.header {
+		min-height: unset;
+	}
+
+
+	/* Nav */
+
+	.nav-row {
+		justify-content: space-between;
+	}
+
+	/* General */
+
+
+	.title-1 {
+		margin-bottom: 30px;
+		font-size: 40px;
+	}
+
+	/* products */
+
+	.product__title {
+		font-size: 22px;
+	}
+
+
+	/* Footer */
+
+	.footer {
+		padding: 40px 0 30px;
+	}
+
+	.footer__wrapper {
+		row-gap: 20px;
+	}
+
+}
