@@ -141,44 +141,44 @@
 
 /* Стилізація заголовка модалу */
 .modal-header {
-    background-color: var(--laguna);
-    color: var(--dark-grey);
-    padding: 15px;
-    animation: fadeInUp 0.5s ease-in-out; /* Анімація появи для заголовка модалу */
+  background-color: var(--laguna);
+  color: var(--dark-grey);
+  padding: 15px;
+  animation: fadeInUp 0.5s ease-in-out; /* Анімація появи для заголовка модалу */
 }
 
 /* Стилізація форми в модалі */
 .modal-body form {
-    max-width: 400px;
-    margin: 0 auto;
-    animation: fadeInUp 0.5s ease-in-out; /* Анімація появи для форми в модалі */
+  max-width: 400px;
+  margin: 0 auto;
+  animation: fadeInUp 0.5s ease-in-out; /* Анімація появи для форми в модалі */
 }
 
 /* Анімація появи знизу */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
 
 /* Modal content */
 .modal-content {
-    opacity: 0; /* Початковий стан: елемент невидимий */
-    transform: translateY(20px); /* Початковий стан: зсув вниз на 20px */
-    animation: fadeIn 0.5s ease-in-out forwards; /* Анімація появи для вмісту модалу */
+  opacity: 0; /* Початковий стан: елемент невидимий */
+  transform: translateY(20px); /* Початковий стан: зсув вниз на 20px */
+  animation: fadeIn 0.5s ease-in-out forwards; /* Анімація появи для вмісту модалу */
 }
 
 /* Анімація появи для вмісту модалу */
 @keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
 
 
@@ -227,7 +227,116 @@ select {
     border-radius: 4px;
 }
 
-/*
+/* Додаткові стилі для мобільного меню */
+
+.mobile-menu {
+  display: none;
+  position: relative;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1000;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  width: 25px;
+  background-color: var(--nav-text);
+  font-family: 'Poppins', sans-serif;
+  margin: 5px 0;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.menu-items {
+  display: none;
+  flex-direction: column;
+  background-color: var(--nav-bg);
+  position: absolute;
+  top: 60px;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu-items a {
+  padding: 15px 20px;
+  color: var(--nav-text);
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.menu-items a:hover {
+  background-color: var(--nav-border);
+}
+
+/* Показ меню для малих екранів */
+@media (max-width: 620px) {
+  .nav {
+      display: none;
+  }
+
+  .mobile-menu {
+      display: block;
+  }
+
+  .menu-toggle:focus,
+  .menu-toggle:active {
+      outline: none;
+  }
+
+  .menu-items {
+      display: flex;
+      flex-direction: column;
+      position: static;
+      width: 100%;
+      box-shadow: none;
+  }
+
+  .menu-toggle span {
+      background-color: var(--nav-text);
+      transition: transform 0.3s ease-in-out;
+  }
+
+  .menu-toggle.open span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+  }
+
+  .menu-toggle.open span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  .menu-toggle.open span {
+      background-color: var(--nav-text);
+      font-family: 'Poppins', sans-serif;
+  }
+
+  .menu-items a {
+      padding: 15px;
+      color: var(--nav-text);
+      text-decoration: none;
+      transition: background-color 0.3s ease-in-out;
+      border-bottom: 1px solid var(--nav-border);
+  }
+
+  .menu-items a:hover {
+      background-color: var(--nav-border);
+  }
+}
+
+
 
 
 /* Table */
