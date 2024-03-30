@@ -12,11 +12,16 @@
 </head>
 <body>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div id="scoreboard"></div>
 
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         let score = 0;
+        let maxScore = 0;
+        let minScore = Infinity;
+        let scores = []; // Array to store game scores
+        let gameLoop; // Reference to the game loop
 
         // Draw player
         let player = {
@@ -36,6 +41,14 @@
             speed: 2
         };
 
+        // Draw coin
+        let coin = {
+            x: Math.random() * (canvas.width - 30),
+            y: 50,
+            width: 20,
+            height: 20
+        };
+
         // Draw score
         function drawScore() {
             ctx.font = '20px Arial';
@@ -43,31 +56,64 @@
             ctx.fillText('Score: ' + score, 10, 30);
         }
 
-        // Draw player and enemy
+        // Update scoreboard
+        function updateScoreboard() {
+            const scoreboard = document.getElementById('scoreboard');
+            scoreboard.innerHTML = `Score: ${score} | Max Score: ${maxScore} | Min Score: ${minScore}`;
+        }
+
+        // Draw player, enemy, coin, and score
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.fillRect(player.x, player.y, player.width, player.height);
             ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+            ctx.fillStyle = 'gold';
+            ctx.fillRect(coin.x, coin.y, coin.width, coin.height);
             drawScore();
 
             // Move enemy
             enemy.y += enemy.speed;
+
+            // Move coin
+            coin.y += enemy.speed / 2;
 
             // Reset enemy position and update score if enemy reaches bottom
             if (enemy.y > canvas.height) {
                 enemy.x = Math.random() * (canvas.width - 30);
                 enemy.y = 0;
                 score++;
+                maxScore = Math.max(maxScore, score);
+                minScore = Math.min(minScore, score);
+                updateScoreboard();
             }
 
-            // Check collision
+            // Reset coin position and update score if coin reaches bottom
+            if (coin.y > canvas.height) {
+                coin.x = Math.random() * (canvas.width - 30);
+                coin.y = 50;
+            }
+
+            // Check collision with enemy
             if (player.x < enemy.x + enemy.width &&
                 player.x + player.width > enemy.x &&
                 player.y < enemy.y + enemy.height &&
                 player.y + player.height > enemy.y) {
-                // Collision detected
-                alert('Game Over! Your score: ' + score);
-                clearInterval(gameLoop);
+                // Collision with enemy detected
+                endGame();
+            }
+
+            // Check collision with coin
+            if (player.x < coin.x + coin.width &&
+                player.x + player.width > coin.x &&
+                player.y < coin.y + coin.height &&
+                player.y + player.height > coin.y) {
+                // Collision with coin detected
+                coin.x = Math.random() * (canvas.width - 30);
+                coin.y = 50;
+                score += 10; // Increase score
+                maxScore = Math.max(maxScore, score);
+                minScore = Math.min(minScore, score);
+                updateScoreboard();
             }
         }
 
@@ -82,11 +128,37 @@
             });
         }
 
-        // Main game loop
-        let gameLoop = setInterval(function () {
-            draw();
-        }, 1000 / 60);
+        // Function to end the game
+        function endGame() {
+            clearInterval(gameLoop); // Stop game loop
+            alert('Game Over! Your score: ' + score);
+            scores.push(score); // Add score to array
+            maxScore = Math.max(maxScore, score);
+            minScore = Math.min(minScore, score);
+            scores.sort((a, b) => b - a); // Sort scores in descending order
+            console.log('Top 3 scores: ' + scores.slice(0, 3).join(', ')); // Display top 3 scores
+            console.log('Bottom 3 scores: ' + scores.slice(-3).join(', ')); // Display bottom 3 scores
+            document.addEventListener('keydown', startGame); // Start game again on keydown
+        }
 
+        // Function to start the game
+        function startGame(event) {
+            if (event.key === 'Enter') {
+                score = 0;
+                maxScore = 0;
+                minScore = Infinity;
+                player.x = canvas.width / 2;
+                enemy.x = Math.random() * (canvas.width - 30);
+                enemy.y = 0;
+                coin.x = Math.random() * (canvas.width - 30);
+                coin.y = 50;
+                gameLoop = setInterval(draw, 1000 / 60);
+                document.removeEventListener('keydown', startGame); // Remove event listener after starting the game
+            }
+        }
+
+        // Start game initially
+        startGame({ key: 'Enter' });
         update();
     </script>
 </body>
