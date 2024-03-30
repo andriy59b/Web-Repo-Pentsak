@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Game</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        let score = 0;
+
+        // Draw player
+        let player = {
+            x: canvas.width / 2,
+            y: canvas.height - 30,
+            width: 30,
+            height: 30,
+            speed: 5
+        };
+
+        // Draw enemy
+        let enemy = {
+            x: Math.random() * (canvas.width - 30),
+            y: 0,
+            width: 30,
+            height: 30,
+            speed: 2
+        };
+
+        // Draw score
+        function drawScore() {
+            ctx.font = '20px Arial';
+            ctx.fillStyle = 'black';
+            ctx.fillText('Score: ' + score, 10, 30);
+        }
+
+        // Draw player and enemy
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+            ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+            drawScore();
+
+            // Move enemy
+            enemy.y += enemy.speed;
+
+            // Reset enemy position and update score if enemy reaches bottom
+            if (enemy.y > canvas.height) {
+                enemy.x = Math.random() * (canvas.width - 30);
+                enemy.y = 0;
+                score++;
+            }
+
+            // Check collision
+            if (player.x < enemy.x + enemy.width &&
+                player.x + player.width > enemy.x &&
+                player.y < enemy.y + enemy.height &&
+                player.y + player.height > enemy.y) {
+                // Collision detected
+                alert('Game Over! Your score: ' + score);
+                clearInterval(gameLoop);
+            }
+        }
+
+        // Update player position
+        function update() {
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'ArrowLeft' && player.x > 0) {
+                    player.x -= player.speed;
+                } else if (event.key === 'ArrowRight' && player.x < canvas.width - player.width) {
+                    player.x += player.speed;
+                }
+            });
+        }
+
+        // Main game loop
+        let gameLoop = setInterval(function () {
+            draw();
+        }, 1000 / 60);
+
+        update();
+    </script>
+</body>
+</html>
