@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Опитування</title>
+</head>
+<body>
+
+<h2>Форма опитування</h2>
+<form id="surveyForm">
+  <label for="faculty">На якому факультеті ви навчаєтесь:</label>
+  <select id="faculty" name="faculty">
+    <option value="engineering">Інженерія</option>
+    <option value="science">Науки</option>
+    <option value="arts">Мистецтво</option>
+  </select><br><br>
+
+  <label>Виберіть потік на якому ви навчаєтесь:</label><br>
+  <input type="radio" id="stream1" name="stream" value="stream1">
+  <label for="stream1">Потік 1</label><br>
+  <input type="radio" id="stream2" name="stream" value="stream2">
+  <label for="stream2">Потік 2</label><br><br>
+
+  <label>Вкажіть групу:</label><br>
+  <input type="checkbox" id="group1" name="group" value="group1">
+  <label for="group1">Група 1</label><br>
+  <input type="checkbox" id="group2" name="group" value="group2">
+  <label for="group2">Група 2</label><br><br>
+
+  <label for="interviewTime">Виберіть зручний час для проходження співбесіди:</label><br>
+  <input type="datetime-local" id="interviewTime" name="interviewTime"><br><br>
+
+  <label for="averageGrade">Вкажіть середній бал:</label><br>
+  <input type="number" id="averageGrade" name="averageGrade" step="0.1" min="1" max="5"><br><br>
+
+  <label for="city">У якому місті ви проживаєте?</label><br>
+  <input type="text" id="city" name="city"><br>
+
+  <label for="color">Який ваш улюбленний колір?</label><br>
+  <input type="color" id="color" name="color"><br>
+
+  <label for="sleep">Скільки годин на добу ви спите в середньому?</label><br>
+  <input type="range" id="sleep" name="sleep" min="0" max="24"><br>
+
+  <label for="hobby">Яке ваше хобі?</label><br>
+  <textarea id="hobby" name="hobby" rows="4" cols="50"></textarea><br>
+
+  <label for="email">Вкажіть свою електронну адресу:</label><br>
+  <input type="email" id="email" name="email"><br>
+
+
+
+  <button type="submit">Надіслати</button>
+</form>
+
+<h2>Фільтри опитування</h2>
+
+<label for="facultyFilter">Оберіть факультет:</label>
+<select id="facultyFilter">
+  <option value="engineering">Інженерія</option>
+  <option value="science">Науки</option>
+  <option value="arts">Мистецтво</option>
+</select><br><br>
+
+<label for="dayFilter">Оберіть день співбесіди:</label>
+<select id="dayFilter">
+  <option value="1">Понеділок</option>
+  <option value="2">Вівторок</option>
+  <option value="3">Середа</option>
+  <option value="4">Четвер</option>
+  <option value="5">П'ятниця</option>
+</select><br><br>
+
+<label for="timeFilter">Оберіть час співбесіди:</label>
+<input type="number" id="timeFilter" min="0" max="23" step="1" value="9"><br><br>
+
+<label for="minGrade">Мінімальний середній бал:</label>
+<input type="number" id="minGrade" min="1" max="5" step="0.1" value="3"><br><br>
+
+<label for="maxGrade">Максимальний середній бал:</label>
+<input type="number" id="maxGrade" min="1" max="5" step="0.1" value="5"><br><br>
+
+<button onclick="applyFilters()">Застосувати фільтри</button>
+
+<div id="results">
+  <!-- Результати фільтрації будуть відображені тут -->
+</div>
+
+<script>
+document.getElementById("surveyForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const surveyData = {};
+  for (const [key, value] of formData.entries()) {
+    surveyData[key] = value;
+  }
+  const surveys = JSON.parse(localStorage.getItem("surveys")) || [];
+  surveys.push(surveyData);
+  localStorage.setItem("surveys", JSON.stringify(surveys));
+  alert("Опитування успішно відправлено!");
+  event.target.reset();
+});
+
+function applyFilters() {
+  const faculty = document.getElementById("facultyFilter").value;
+  const day = parseInt(document.getElementById("dayFilter").value);
+  const time = parseInt(document.getElementById("timeFilter").value);
+  const minGrade = parseFloat(document.getElementById("minGrade").value);
+  const maxGrade = parseFloat(document.getElementById("maxGrade").value);
+
+  const filteredResults = filterSurveys(faculty, day, time, minGrade, maxGrade);
+  displayResults(filteredResults);
+}
+
+function filterSurveys(faculty, day, time, minGrade, maxGrade) {
+  const surveys = JSON.parse(localStorage.getItem("surveys")) || [];
+  return surveys.filter(survey => {
+    const interviewTime = new Date(survey.interviewTime);
+    return survey.faculty === faculty &&
+           interviewTime.getDay() === day &&
+           interviewTime.getHours() === time &&
+           survey.averageGrade >= minGrade &&
+           survey.averageGrade <= maxGrade;
+  });
+}
+
+function displayResults(results) {
+  const resultsContainer = document.getElementById("results");
+  resultsContainer.innerHTML = "";
+  if (results.length === 0) {
+    resultsContainer.innerHTML = "<p>No results found.</p>";
+  } else {
+    results.forEach(result => {
+      const resultElement = document.createElement("p");
+      resultElement.textContent = JSON.stringify(result);
+      resultsContainer.appendChild(resultElement);
+    });
+  }
+}
+
+// Початкове відображення всіх результатів без фільтрів
+displayResults(JSON.parse(localStorage.getItem("surveys")) || []);
+</script>
+
+</body>
+</html>
