@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .options {
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .correct-text {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect-text {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Web Design Quiz</h1>
+        <div id="questions-container"></div>
+        <button onclick="submittexts()">Submit</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                "question": "What does HTML stand for?",
+                "options": [
+                    {"text": "Hyper Text Markup Language", "isCorrect": true},
+                    {"text": "Hyperlinks and Text Markup Language", "isCorrect": false},
+                    {"text": "Home Tool Markup Language", "isCorrect": false},
+                ]
+            },
+            {
+                "question": "What is the correct HTML element for inserting a line break?",
+                "options": [
+                    {"text": "&lt;lb&gt;", "isCorrect": false},
+                    {"text": "&lt;break&gt;", "isCorrect": false},
+                    {"text": "&lt;br&gt;", "isCorrect": true},
+                ]
+            },
+            {
+                "question": "What is the correct way to add a comment in HTML?",
+                "options": [
+                    {"text": "&lt!-- This is a comment --&gt", "isCorrect": true},
+                    {"text": "// This is a comment", "isCorrect": false},
+                    {"text": "/ This is a comment /", "isCorrect": false},
+                ]
+            },
+            {
+                "question": "Which HTML tag is used to define an unordered list?",
+                "options": [
+                    {"text": "&lt;ol&gt;", "isCorrect": false},
+                    {"text": "&lt;li&gt;", "isCorrect": false},
+                    {"text": "&lt;ul&gt;", "isCorrect": true},
+                ]
+            },
+            {
+                "question": "What does CSS stand for?",
+                "options": [
+                    {"text": "Creative Style Sheets", "isCorrect": false},
+                    {"text": "Cascading Style Sheets", "isCorrect": true},
+                    {"text": "Computer Style Sheets", "isCorrect": false},
+                ]
+            },
+            // Add more questions here
+        ];
+
+        const questionsContainer = document.getElementById('questions-container');
+
+        function loadQuestions() {
+            questions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('question');
+                questionDiv.innerHTML = `
+                    <p>${index + 1}. ${question.question}</p>
+                    <div class="options">
+                        ${question.options.map((option, optionIndex) => `
+                            <input type="radio" name="q${index}" value="${option.isCorrect}" id="q${index}_${optionIndex}">
+                            <label for="q${index}_${optionIndex}">${option.text}</label><br>
+                        `).join('')}
+                    </div>
+                    <span class="correct-text" style="display:none;">Correct text: ${question.options.findIndex(opt => opt.isCorrect) + 1}</span>
+                `;
+                questionsContainer.appendChild(questionDiv);
+            });
+        }
+
+        function submittexts() {
+            const inputs = document.querySelectorAll('input:checked');
+            let score = 0;
+            inputs.forEach(input => {
+                if (input.value === 'true') {
+                    score++;
+                    input.parentElement.classList.add('correct-text');
+                } else {
+                    input.parentElement.classList.add('incorrect-text');
+                }
+            });
+            document.getElementById('result').innerText = `Your score: ${score}/${questions.length}`;
+        }
+
+        loadQuestions();
+    </script>
+</body>
+</html>
