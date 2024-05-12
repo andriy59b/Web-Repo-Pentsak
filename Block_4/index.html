@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet Store - Pentsak Andrii</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="./input.css">
+</head>
+
+<body class="bg-black">
+    <!-- Navbar -->
+    <nav class="bg-black">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div class="relative flex h-16 items-center justify-between">
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+              <!-- Mobile menu button-->
+              <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                <span class="absolute -inset-0.5"></span>
+                <span class="sr-only">Open main menu</span>
+                <!--
+                  Icon when menu is closed.
+      
+                  Menu open: "hidden", Menu closed: "block"
+                -->
+                <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <!--
+                  Icon when menu is open.
+      
+                  Menu open: "block", Menu closed: "hidden"
+                -->
+                <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+              <div class="flex flex-shrink-0 items-center">
+                <a class="text-2xl text-white" href="/">ADICROS</a>
+              </div>
+              <div class="hidden sm:ml-6 sm:block">
+                <div class="flex pl-24 space-x-24">
+                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                  <a href="#" class="border-b-2 border-indigo-600 text-white rounded-0 px-3 py-2 text-base font-medium" aria-current="page">men</a>
+                  <a href="#" class="text-gray-300 hover:bg-indigo-600 hover:text-white rounded-md px-3 py-2 text-base font-medium">women</a>
+                  <a href="#" class="text-gray-300 hover:bg-indigo-600 hover:text-white rounded-md px-3 py-2 text-base font-medium">junior</a>
+                  <div class="flex gap-2">
+                      <input type="text" id="search-navbar" class="block w-full p-2 ps-10 text-sm text-white border border-gray-300 rounded-lg bg-transparent focus:ring-indigo-600 focus:border-indigo-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search...">
+                      <button type="button" class="text-white bg-indigo-600 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 text-center dark:bg-blue-600 dark:hover:bg-indigo-600 dark:focus:ring-blue-800">Search</button>
+                  </div>
+                  <button type="button" class="text-white bg-indigo-600 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-8 text-center dark:bg-blue-600 dark:hover:bg-indigo-600 dark:focus:ring-blue-800">Login</button>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+          <div class="space-y-1 px-2 pb-3 pt-2">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">men</a>
+            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">women</a>
+            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">junior</a>
+            <div class="flex flex-col gap-2">
+                <input type="text" id="search-navbar" class="block w-50 p-2 ps-10 text-sm text-white border border-gray-300 rounded-lg bg-transparent focus:ring-indigo-600 focus:border-indigo-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search...">
+                <button type="button" class="text-white bg-indigo-600 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-indigo-600 dark:focus:ring-blue-800">Search</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+
+    <header class="flex flex-col">
+            <main class="flex flex-col">
+                    <h2 class="text-4xl text-center p-10 font-bold text-indigo-600">Popular Now</h2>
+                    <ul class="flex flex-col gap-6 justify-center lg:flex-row p-5">
+
+                        <li class="max-w-md bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <a href="https://www.adidas.ua/krossovki-grand-court-base-lifestyle-sportswear-hr0234-1?feed=gm%3Futm_source%3Dgoogle&utm_medium=f_merch&gad_source=1&gclid=Cj0KCQiA5rGuBhCnARIsAN11vgQjqt2cEsMQsmdL6WYwJHw2Yk4-mK6pVuu1x_8lObpTpC9LtN_BA5UaAglEEALw_wcB">
+                                <img src="./image/product1.webp" alt="product img" class="product__img">
+                            </a>
+                            <div class="p-5">
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">GRAND COURT BASE LIFESTYLE</h5>
+                                <a href="https://www.adidas.ua/krossovki-grand-court-base-lifestyle-sportswear-hr0234-1?feed=gm%3Futm_source%3Dgoogle&utm_medium=f_merch&gad_source=1&gclid=Cj0KCQiA5rGuBhCnARIsAN11vgQjqt2cEsMQsmdL6WYwJHw2Yk4-mK6pVuu1x_8lObpTpC9LtN_BA5UaAglEEALw_wcB" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-indigo-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-indigo-600 dark:focus:ring-blue-800">
+                                    Read more
+                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2 pl-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </li>
+
+                        <li class="max-w-md bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <a href="https://www.adidas.ua/futbolnye-butsy-copa-pure-2-league-tf-performance-ie7498-1">
+                                <img src="./image/product2.webp" alt="product img" class="product__img">
+                            </a>
+                            <div class="p-5">
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">COPA PURE II LEAGUE TURF</h5>
+                                <a href="https://www.adidas.ua/futbolnye-butsy-copa-pure-2-league-tf-performance-ie7498-1" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-indigo-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-indigo-600 dark:focus:ring-blue-800">
+                                    Read more
+                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2 pl-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </li>
+
+                        <li class="max-w-md bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <a href="https://www.adidas.ua/krosivki-ozmillen-originals-ie3517">
+                                <img src="./image/product3.webp" alt="product img" class="product__img">
+                            </a>
+                            <div class="p-5">
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">OZMILLEN</h5>
+                                <a href="https://www.adidas.ua/krosivki-ozmillen-originals-ie3517" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-indigo-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-indigo-600 dark:focus:ring-blue-800">
+                                    Read more
+                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2 pl-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </li>
+        
+                    </ul>
+            </main>
+            
+            <div class="overflow-x-auto p-5">
+                <table class="table-auto min-w-full">
+                    <h1 class="text-2xl font-bold mb-4 text-center text-indigo-800">ТОП 5 НАЙПРОДАВАНІШИХ КРОСІВОК МИНУЛОГО РОКУ</h1>
+                    <thead class="bg-indigo-600 text-white">
+                        <tr>
+                            <th class="px-4 py-2">#</th>
+                            <th class="px-4 py-2">КРОСИ</th>
+                            <th class="px-4 py-2">ЦІНА</th>
+                            <th class="px-4 py-2">КІЛЬКІСТЬ ПРОДАНИХ</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center text-white">
+                        <tr>
+                            <td class="border px-4 py-2">1</td>
+                            <td class="border px-4 py-2">Adidas Superstar</td>
+                            <td class="border px-4 py-2">80-250$</td>
+                            <td class="border px-4 py-2">800000 пар</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">2</td>
+                            <td class="border px-4 py-2">Adidas Stan Smith</td>
+                            <td class="border px-4 py-2">60-120$</td>
+                            <td class="border px-4 py-2">760000 пар</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">3</td>
+                            <td class="border px-4 py-2">Adidas Ultra Boost</td>
+                            <td class="border px-4 py-2">120-340$</td>
+                            <td class="border px-4 py-2">570000 пар</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">4</td>
+                            <td class="border px-4 py-2">Adidas NMD</td>
+                            <td class="border px-4 py-2">140-250$</td>
+                            <td class="border px-4 py-2">450000 пар</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">5</td>
+                            <td class="border px-4 py-2">Adidas Ultra Boost</td>
+                            <td class="border px-4 py-2">120-340$</td>
+                            <td class="border px-4 py-2">570000 пар</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            
+            <div class="flex flex-col">
+                <!-- Нумерований список (каталог товарів) -->
+                <h2 class="text-2xl font-bold mb-4 text-center text-indigo-600">Каталог оригінального взуття</h2>
+                <div class="flex justify-center">
+                    <ol class="list-decimal ml-6 text-white">
+                        <li class="mb-4">Бігове взуття
+                            <ul class="list-disc ml-6">
+                                <li>Ultraboost</li>
+                                <li>Edge Bounce</li>
+                            </ul>
+                        </li>
+                        <li class="mb-4">Футбольні черевики
+                            <ul class="list-disc ml-6">
+                                <li>Predator</li>
+                                <li>Copa Mundial</li>
+                            </ul>
+                        </li>
+                        <li class="mb-4">Тренувальне взуття
+                            <ul class="list-disc ml-6">
+                                <li>Alphabounce</li>
+                                <li>Powerlift</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Маркований список (переваги покупки в adidas) -->
+                <h2 class="text-2xl font-bold mb-4 text-center text-indigo-600">Переваги покупки в Adicros</h2>
+                <div class="flex justify-center">
+                    <ul class="list-disc ml-6 text-white">
+                        <li class="mb-2">Висока якість взуття</li>
+                        <li class="mb-2">Широкий асортимент моделей</li>
+                        <li class="mb-2">Безкоштовна доставка при замовленні від $100</li>
+                        <li class="mb-2">Знижки для постійних клієнтів</li>
+                    </ul>
+                </div>
+            
+                <!-- Визначення (характеристики вибраної моделі) -->
+                <h2 class="text-2xl font-bold mb-4 text-center text-indigo-600">Характеристики Adidas Ultraboost</h2>
+                <dl class="mb-4 flex justify-center">
+                    <div class="grid text-white">
+                        <dt class="font-semibold">Тип:</dt>
+                        <dd class="mt-1">Бігове взуття</dd>
+                        <dt class="font-semibold">Технологія підошви:</dt>
+                        <dd class="mt-1">Boost</dd>
+                        <dt class="font-semibold">Матеріал верху:</dt>
+                        <dd class="mt-1">Плетений текстиль</dd>
+                    </div>
+                </dl>
+                
+                <!-- Вкладені списки -->
+                <h2 class="text-2xl font-bold mb-4 text-center text-indigo-600">Для неї і для нього</h2>
+                <ol class="list-decimal ml-6 flex justify-center text-white">
+                    <li class="mb-4">Жіноче взуття
+                        <ul class="list-disc ml-6">
+                            <li>Бігове взуття</li>
+                            <li>Тренувальне взуття</li>
+                        </ul>
+                    </li>
+                    <li class="mb-4">Чоловіче взуття
+                        <ul class="list-disc ml-6">
+                            <li>Футбольні черевики</li>
+                            <li>Тренувальне взуття</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            
+        </header>
+
+        <footer class="flex justify-center">
+                <div class="">
+                    <ul class="flex flex-row gap-4 mb-5 mt-5">
+                        <li class="social__item"><a href="#!"><img src="./image/icons/instagram.svg" alt="Link"></a></li>
+                        <li class="social__item"><a href="#!"><img src="./image/icons/twitter.svg" alt="Link"></a></li>
+                        <li class="social__item"><a href="#!"><img src="./image/icons/gitHub.svg" alt="Link"></a></li>
+                        <li class="social__item"><a href="#!"><img src="./image/icons/linkedIn.svg" alt="Link"></a></li>
+                    </ul>
+                    <div class="copyright text-white text-center">
+                        <p>© 2024 adicros.com</p>
+                    </div>
+                </div>
+        </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>
